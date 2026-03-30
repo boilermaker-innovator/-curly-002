@@ -26,14 +26,6 @@
         h1 span { color: var(--red); }
         .subtitle { font-size: 14px; color: var(--muted); line-height: 1.6; max-width: 420px; margin: 0 auto; }
 
-        .steps { display: flex; align-items: center; justify-content: center; margin: 36px 0; }
-        .step { display: flex; flex-direction: column; align-items: center; gap: 6px; flex: 1; max-width: 100px; }
-        .step-dot { width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--border); background: var(--surface); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: var(--muted); transition: all 0.3s ease; }
-        .step.active .step-dot { border-color: var(--red); color: var(--red); background: var(--red-glow); }
-        .step-line { flex: 1; height: 1px; background: var(--border); max-width: 60px; }
-        .step-label { font-size: 10px; color: var(--muted); letter-spacing: 0.05em; text-align: center; }
-        .step.active .step-label { color: var(--text); }
-
         .section { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; margin-bottom: 16px; overflow: hidden; transition: border-color 0.2s; }
         .section:focus-within { border-color: rgba(255,255,255,0.15); }
         .section-header { display: flex; align-items: center; gap: 12px; padding: 18px 20px; cursor: pointer; user-select: none; }
@@ -48,25 +40,30 @@
         .field { margin-bottom: 16px; }
         .field:last-child { margin-bottom: 0; }
         label { display: block; font-size: 12px; font-weight: 600; color: var(--muted); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 6px; }
-        label span { color: var(--red); margin-left: 2px; }
-        input[type=text], input[type=url], input[type=date], textarea, select { width: 100%; background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; padding: 11px 14px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--text); outline: none; transition: border-color 0.2s; -webkit-appearance: none; }
-        input:focus, textarea:focus, select:focus { border-color: rgba(255,255,255,0.2); }
+        label span { color: var(--red); }
+        input[type=text], input[type=url], textarea, select { width: 100%; background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; padding: 11px 14px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--text); outline: none; transition: border-color 0.2s; -webkit-appearance: none; }
+        input:focus, textarea:focus { border-color: rgba(255,255,255,0.2); }
         input::placeholder, textarea::placeholder { color: var(--muted); }
         textarea { resize: vertical; min-height: 80px; line-height: 1.6; }
         .hint { font-size: 11px; color: var(--muted); margin-top: 5px; line-height: 1.5; }
         .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-        @media(max-width: 480px) { .field-row { grid-template-columns: 1fr; } }
+        @media(max-width:480px) { .field-row { grid-template-columns: 1fr; } }
         .divider { height: 1px; background: var(--border); margin: 16px 0; }
 
+        /* Link row builder */
+        .link-row { display: grid; grid-template-columns: 1fr 1fr auto; gap: 8px; align-items: center; margin-bottom: 10px; }
+        .link-row input { margin: 0; }
+        .link-remove { width: 36px; height: 36px; border-radius: 8px; border: 1px solid var(--border); background: transparent; color: var(--muted); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 16px; transition: all 0.2s; flex-shrink: 0; }
+        .link-remove:hover { border-color: var(--red); color: var(--red); }
+        .add-link-btn { display: flex; align-items: center; gap: 8px; padding: 10px 14px; background: transparent; border: 1px dashed var(--border); border-radius: 10px; color: var(--muted); font-size: 13px; font-weight: 600; cursor: pointer; width: 100%; transition: all 0.2s; margin-top: 4px; }
+        .add-link-btn:hover { border-color: var(--accent); color: var(--accent); }
+
         /* Photo input */
-        .photo-input-wrap { display: flex; flex-direction: column; gap: 8px; }
-        .photo-tabs { display: flex; gap: 6px; }
+        .photo-tabs { display: flex; gap: 6px; margin-bottom: 8px; }
         .photo-tab { flex: 1; padding: 8px; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; font-size: 12px; font-weight: 600; color: var(--muted); cursor: pointer; text-align: center; transition: all 0.2s; }
         .photo-tab.active { border-color: var(--red); color: var(--red); background: var(--red-glow); }
         .photo-url-row { display: flex; gap: 8px; }
         .photo-url-row input { flex: 1; }
-        .photo-preview-btn { padding: 11px 14px; background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; color: var(--muted); font-size: 12px; cursor: pointer; white-space: nowrap; transition: all 0.2s; }
-        .photo-preview-btn:hover { border-color: rgba(255,255,255,0.2); color: var(--text); }
         .file-drop { border: 2px dashed var(--border); border-radius: 10px; padding: 20px; text-align: center; cursor: pointer; transition: all 0.2s; position: relative; }
         .file-drop:hover, .file-drop.drag { border-color: var(--red); background: var(--red-glow); }
         .file-drop input[type=file] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; }
@@ -86,21 +83,33 @@
         .card-editor.open .card-editor-header .chevron { transform: rotate(180deg); }
         .chevron { display: inline-block; transition: transform 0.2s; color: var(--muted); }
 
+        /* Buttons */
         .generate-wrap { position: sticky; bottom: 20px; padding-top: 20px; display: flex; flex-direction: column; gap: 10px; }
         .generate-btn { width: 100%; padding: 16px; background: linear-gradient(135deg, #dc2626, #b91c1c); border: none; border-radius: 14px; font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.08em; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: opacity 0.2s, transform 0.1s; box-shadow: 0 8px 32px rgba(220,38,38,0.3); }
         .generate-btn:hover { opacity: 0.92; }
         .generate-btn:active { transform: scale(0.99); }
-        .clear-btn { width: 100%; padding: 12px; background: transparent; border: 1px solid var(--border); border-radius: 14px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600; color: var(--muted); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.2s; }
+        .btn-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .preview-btn { padding: 12px; background: transparent; border: 1px solid rgba(59,130,246,0.4); border-radius: 14px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600; color: var(--accent); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.2s; }
+        .preview-btn:hover { background: rgba(59,130,246,0.08); border-color: var(--accent); }
+        .clear-btn { padding: 12px; background: transparent; border: 1px solid var(--border); border-radius: 14px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600; color: var(--muted); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.2s; }
         .clear-btn:hover { border-color: rgba(255,255,255,0.2); color: var(--text); }
 
+        /* Preview */
+        .preview-wrap { display: none; margin-top: 24px; }
+        .preview-wrap.show { display: block; }
+        .preview-label { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; text-align: center; }
+        .phone-shell { width: 320px; height: 580px; margin: 0 auto; border-radius: 40px; background: #111; border: 6px solid #2a2a2a; box-shadow: 0 24px 64px rgba(0,0,0,0.6); overflow: hidden; position: relative; }
+        .phone-shell::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 80px; height: 20px; background: #2a2a2a; border-radius: 0 0 12px 12px; z-index: 10; }
+        .phone-shell iframe { width: 100%; height: 100%; border: none; display: block; }
+
+        /* Success */
         .success-panel { display: none; background: var(--surface); border: 1px solid rgba(34,197,94,0.3); border-radius: 16px; padding: 28px 24px; text-align: center; margin-top: 20px; }
         .success-panel.show { display: block; }
         .success-icon { font-size: 40px; margin-bottom: 12px; }
         .success-title { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 0.05em; color: var(--green); margin-bottom: 6px; }
         .success-sub { font-size: 13px; color: var(--muted); margin-bottom: 20px; line-height: 1.6; }
-        .download-btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 28px; background: var(--green); border: none; border-radius: 10px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 14px; color: #000; cursor: pointer; text-decoration: none; transition: opacity 0.2s; }
+        .download-btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 28px; background: var(--green); border: none; border-radius: 10px; font-weight: 700; font-size: 14px; color: #000; cursor: pointer; text-decoration: none; transition: opacity 0.2s; }
         .download-btn:hover { opacity: 0.88; }
-        select option { background: #1a2035; }
     </style>
 </head>
 <body>
@@ -108,18 +117,8 @@
     <header>
         <div class="brand-tag">iTabs Configurator</div>
         <h1>Your <span>Widget.</span><br>Your Story.</h1>
-        <p class="subtitle">Fill in your details and photos — we'll build your shareable iTabs card deck ready to deploy.</p>
+        <p class="subtitle">Fill in your details — Card 1 is your links page. Swipe right for the full story.</p>
     </header>
-
-    <div class="steps">
-        <div class="step active" id="s1"><div class="step-dot">1</div><div class="step-label">Profile</div></div>
-        <div class="step-line"></div>
-        <div class="step active" id="s2"><div class="step-dot">2</div><div class="step-label">Events</div></div>
-        <div class="step-line"></div>
-        <div class="step active" id="s3"><div class="step-dot">3</div><div class="step-label">Cards</div></div>
-        <div class="step-line"></div>
-        <div class="step active" id="s4"><div class="step-dot">4</div><div class="step-label">Links</div></div>
-    </div>
 
     <!-- Section 1: Profile -->
     <div class="section open">
@@ -133,22 +132,64 @@
                 <div class="field"><label>First Name <span>*</span></label><input type="text" id="firstName" value="Samson"></div>
                 <div class="field"><label>Last Name <span>*</span></label><input type="text" id="lastName" value="Swift"></div>
             </div>
+            <div class="field"><label>Athlete Title / Tagline</label><input type="text" id="title" value="18-year-old endurance athlete"></div>
+            <div class="field"><label>Your Story <span>*</span></label><textarea id="bio" rows="4">At 18 years old, I'm self-coaching myself through two of endurance sport's toughest challenges simultaneously — an Ironman 70.3 and a 100km ultra. No coach. No team behind me. Just grit, a plan, and a reason bigger than myself.</textarea></div>
+            <div class="field"><label>Cause / Why You're Racing</label><textarea id="cause" rows="3">I'm running 100km for the Black Dog Institute — Australia's leading mental health research centre. Every kilometre is a chance to change the conversation around mental health.</textarea></div>
+        </div>
+    </div>
+
+    <!-- Section 2: Links Card -->
+    <div class="section open">
+        <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-icon" style="background:rgba(34,197,94,0.1)">🔗</div>
+            <div><div class="section-title">Links Card (Card 1)</div><div class="section-sub">Your Linktree — first thing people see</div></div>
+            <div class="section-chevron">▾</div>
+        </div>
+        <div class="section-body">
             <div class="field">
-                <label>Athlete Title / Tagline</label>
-                <input type="text" id="title" value="18-year-old endurance athlete">
+                <label>Card Headline</label>
+                <input type="text" id="linksHeadline" value="[Samson Swift] — Links">
+                <div class="hint">Wrap a word in [brackets] to highlight it.</div>
             </div>
             <div class="field">
-                <label>Your Story <span>*</span></label>
-                <textarea id="bio" rows="4">At 18 years old, I'm self-coaching myself through two of endurance sport's toughest challenges simultaneously — an Ironman 70.3 and a 100km ultra. No coach. No team behind me. Just grit, a plan, and a reason bigger than myself.</textarea>
+                <label>Tagline / subtext</label>
+                <input type="text" id="linksTagline" value="18 · Endurance Athlete · Racing for Mental Health">
+            </div>
+            <div class="divider"></div>
+            <label>Your Links <span>*</span></label>
+            <div class="hint" style="margin-bottom:12px">Add up to 8 buttons. Label is what people tap. URL is where they go.</div>
+            <div id="linkRows"></div>
+            <button class="add-link-btn" onclick="addLinkRow()">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                Add Another Link
+            </button>
+            <div class="divider"></div>
+            <div class="field">
+                <label>Background Photo (optional)</label>
+                <div id="photoWrapL">
+                    <div class="photo-tabs">
+                        <div class="photo-tab active" onclick="switchPhotoTab('L','url')">🔗 Image URL</div>
+                        <div class="photo-tab" onclick="switchPhotoTab('L','upload')">📤 Upload</div>
+                    </div>
+                    <div id="urlPanelL"><input type="url" id="cLphotoUrl" placeholder="https://... paste image URL" oninput="previewFromUrl('L')"></div>
+                    <div id="uploadPanelL" style="display:none">
+                        <div class="file-drop" id="dropL" ondragover="handleDrag(event,'L')" ondragleave="handleDragLeave('L')" ondrop="handleDrop(event,'L')">
+                            <input type="file" accept="image/*" onchange="handleFileSelect(event,'L')">
+                            <div class="file-drop-text"><strong>Tap to choose photo</strong>or drag and drop here</div>
+                        </div>
+                    </div>
+                    <img class="photo-preview" id="prevL" src="" alt="preview">
+                    <span class="photo-clear" id="clrL" onclick="clearPhoto('L')">✕ Remove photo</span>
+                </div>
             </div>
             <div class="field">
-                <label>Cause / Why You're Racing</label>
-                <textarea id="cause" rows="3">I'm running 100km for the Black Dog Institute — Australia's leading mental health research centre. Every kilometre is a chance to change the conversation around mental health.</textarea>
+                <label>Overlay Darkness</label>
+                <input type="range" id="cLoverlay" min="0.3" max="0.85" step="0.05" value="0.6" style="width:100%;accent-color:var(--red)">
             </div>
         </div>
     </div>
 
-    <!-- Section 2: Events -->
+    <!-- Section 3: Events -->
     <div class="section open">
         <div class="section-header" onclick="toggleSection(this)">
             <div class="section-icon" style="background:rgba(59,130,246,0.1)">🏅</div>
@@ -171,54 +212,63 @@
         </div>
     </div>
 
-    <!-- Section 3: Cards -->
+    <!-- Section 4: Story Cards -->
     <div class="section open">
         <div class="section-header" onclick="toggleSection(this)">
             <div class="section-icon" style="background:rgba(168,85,247,0.1)">🃏</div>
-            <div><div class="section-title">Card Content + Photos</div><div class="section-sub">Headline, summary and hero photo per card</div></div>
+            <div><div class="section-title">Story Cards (Cards 2–6)</div><div class="section-sub">Headline, summary and hero photo per card</div></div>
             <div class="section-chevron">▾</div>
         </div>
         <div class="section-body">
-            <div class="hint" style="margin-bottom:14px">Each card can have its own photo. Use <code style="background:var(--surface2);padding:1px 5px;border-radius:4px;font-size:11px">[word]</code> in headlines to highlight a key term.</div>
-
-            <!-- Cards 1-5 -->
+            <div class="hint" style="margin-bottom:14px">Use <code style="background:var(--surface2);padding:1px 5px;border-radius:4px;font-size:11px">[word]</code> in headlines to highlight a key term.</div>
             <div id="cardEditors"></div>
         </div>
     </div>
 
-    <!-- Section 4: Links -->
+    <!-- Section 5: Socials & Donate -->
     <div class="section open">
         <div class="section-header" onclick="toggleSection(this)">
-            <div class="section-icon" style="background:rgba(34,197,94,0.1)">🔗</div>
-            <div><div class="section-title">Links & Socials</div><div class="section-sub">Donate button + social icons</div></div>
+            <div class="section-icon" style="background:rgba(224,53,53,0.1)">❤️</div>
+            <div><div class="section-title">Donate & Socials</div><div class="section-sub">Sponsor button + social icons on final card</div></div>
             <div class="section-chevron">▾</div>
         </div>
         <div class="section-body">
-            <div class="field">
-                <label>Donate / Fundraiser URL <span>*</span></label>
-                <input type="url" id="donateUrl" value="https://www.teamblackdog.org.au/fundraisers/mindthehundred/mindthehundred--mt100-?utm_source=ig&utm_medium=social&utm_content=link_in_bio">
-            </div>
+            <div class="field"><label>Donate / Fundraiser URL <span>*</span></label><input type="url" id="donateUrl" value="https://www.teamblackdog.org.au/fundraisers/mindthehundred/mindthehundred--mt100-?utm_source=ig&utm_medium=social&utm_content=link_in_bio"></div>
             <div class="field"><label>Instagram URL</label><input type="url" id="igUrl" value="https://www.instagram.com/samsonswiftt/"></div>
-            <div class="field"><label>TikTok URL</label><input type="url" id="ttUrl" value="" placeholder="https://www.tiktok.com/@yourhandle"><div class="hint">Leave blank — icon shows inactive until added.</div></div>
-            <div class="field"><label>YouTube URL</label><input type="url" id="ytUrl" value="" placeholder="https://www.youtube.com/@yourchannel"><div class="hint">Leave blank — icon shows inactive until added.</div></div>
+            <div class="field"><label>TikTok URL</label><input type="url" id="ttUrl" value="" placeholder="https://www.tiktok.com/@yourhandle"><div class="hint">Leave blank — shows inactive until added.</div></div>
+            <div class="field"><label>YouTube URL</label><input type="url" id="ytUrl" value="" placeholder="https://www.youtube.com/@yourchannel"></div>
         </div>
     </div>
 
+    <!-- Buttons -->
     <div class="generate-wrap">
         <button class="generate-btn" onclick="generateWidget()">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
             GENERATE MY ITABS WIDGET
         </button>
-        <button class="clear-btn" onclick="clearForm()">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.84"/></svg>
-            Clear All Fields
-        </button>
+        <div class="btn-row">
+            <button class="preview-btn" onclick="showPreview()">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                Preview
+            </button>
+            <button class="clear-btn" onclick="clearForm()">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.84"/></svg>
+                Clear All
+            </button>
+        </div>
     </div>
 
+    <!-- Inline preview -->
+    <div class="preview-wrap" id="previewWrap">
+        <div class="preview-label">📱 Live Preview</div>
+        <div class="phone-shell"><iframe id="previewFrame"></iframe></div>
+    </div>
+
+    <!-- Success -->
     <div class="success-panel" id="successPanel">
         <div class="success-icon">🎉</div>
         <div class="success-title">Widget Ready!</div>
-        <div class="success-sub">Your iTabs card deck has been generated with photos.<br>Download and deploy to GitHub Pages or send to Jon to publish.</div>
+        <div class="success-sub">Your iTabs card deck is built — Card 1 is your links, Cards 2–6 tell your story.<br>Download and deploy to GitHub Pages or send to Jon to publish.</div>
         <a class="download-btn" id="downloadBtn" href="#" download="itabs-samson-swift.html">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             Download Widget HTML
@@ -227,21 +277,21 @@
 </div>
 
 <script>
-// Card definitions
+// ── Story card definitions (Cards 2–6) ──────────────────────────────────────
 const cardDefs = [
-    { num: '01', label: 'Meet [Your Name]',       head: 'Meet [Samson] — Endurance Athlete',        sum: '',  tag:'01 / ATHLETE', tagClass:'',          heroClass:'hero-default', showDonate:false, showSocials:false },
-    { num: '02', label: 'The Cause',               head: 'Running [100km] for Mental Health',         sum: '',  tag:'02 / MISSION', tagClass:'tag-red',    heroClass:'hero-red',     showDonate:true,  showSocials:false },
-    { num: '03', label: 'Event 1',                 head: 'Ironman 70.3 [Debut] on 22.03.26',          sum: '',  tag:'03 / EVENT',   tagClass:'tag-cyan',   heroClass:'hero-cyan',    showDonate:false, showSocials:false },
-    { num: '04', label: 'Training',                head: 'Big [Weeks] in the Books',                  sum: '',  tag:'04 / TRAINING',tagClass:'tag-purple', heroClass:'hero-purple',  showDonate:false, showSocials:false },
-    { num: '05', label: 'Follow + Support',        head: 'Follow the [Journey] — Back the Cause',     sum: '',  tag:'05 / SUPPORT', tagClass:'tag-green',  heroClass:'hero-green',   showDonate:true,  showSocials:true  }
+    { num:'02', label:'Meet You',          head:'Meet [Samson] — Endurance Athlete',      tag:'02 / ATHLETE', tagClass:'',          heroClass:'hero-default', showDonate:false, showSocials:false },
+    { num:'03', label:'The Cause',         head:'Running [100km] for Mental Health',       tag:'03 / MISSION', tagClass:'tag-red',    heroClass:'hero-red',     showDonate:true,  showSocials:false },
+    { num:'04', label:'Event 1',           head:'Ironman 70.3 [Debut] on 22.03.26',        tag:'04 / EVENT',   tagClass:'tag-cyan',   heroClass:'hero-cyan',    showDonate:false, showSocials:false },
+    { num:'05', label:'Training',          head:'Big [Weeks] in the Books',                tag:'05 / TRAINING',tagClass:'tag-purple', heroClass:'hero-purple',  showDonate:false, showSocials:false },
+    { num:'06', label:'Follow + Support',  head:'Follow the [Journey] — Back the Cause',   tag:'06 / SUPPORT', tagClass:'tag-green',  heroClass:'hero-green',   showDonate:true,  showSocials:true  }
 ];
 
-// Build card editors
-const container = document.getElementById('cardEditors');
+// ── Build story card editors ─────────────────────────────────────────────────
+const cardContainer = document.getElementById('cardEditors');
 cardDefs.forEach((c, i) => {
-    const idx = i + 1;
-    container.innerHTML += `
-    <div class="card-editor ${idx===1?'open':''}" id="ce${idx}">
+    const idx = i + 2; // cards 2-6
+    cardContainer.innerHTML += `
+    <div class="card-editor ${i===0?'open':''}" id="ce${idx}">
         <div class="card-editor-header" onclick="toggleCard(this)">
             <span class="card-num">${c.num}</span>
             <span style="font-size:13px;color:var(--text)">${c.label}</span>
@@ -251,32 +301,24 @@ cardDefs.forEach((c, i) => {
             <div class="field">
                 <label>Headline</label>
                 <input type="text" id="c${idx}head" value="${c.head}">
-                <div class="hint">Wrap a word in [brackets] to highlight it in colour.</div>
+                <div class="hint">Wrap a word in [brackets] to highlight it.</div>
             </div>
             <div class="field">
                 <label>Summary</label>
-                <textarea id="c${idx}sum" rows="3" placeholder="Leave blank to auto-fill from profile...">${c.sum}</textarea>
+                <textarea id="c${idx}sum" rows="3" placeholder="Leave blank to auto-fill..."></textarea>
             </div>
             <div class="field">
                 <label>Hero Photo</label>
-                <div class="photo-input-wrap" id="photoWrap${idx}">
+                <div id="photoWrap${idx}">
                     <div class="photo-tabs">
-                        <div class="photo-tab active" onclick="switchPhotoTab(${idx},'url')">🔗 Image URL</div>
+                        <div class="photo-tab active" onclick="switchPhotoTab(${idx},'url')">🔗 URL</div>
                         <div class="photo-tab" onclick="switchPhotoTab(${idx},'upload')">📤 Upload</div>
                     </div>
-                    <div id="urlPanel${idx}">
-                        <div class="photo-url-row">
-                            <input type="url" id="c${idx}photoUrl" placeholder="https://... paste image URL" oninput="previewFromUrl(${idx})">
-                        </div>
-                        <div class="hint">Paste a direct image URL (from Instagram CDN, GitHub, Imgur, etc.)</div>
-                    </div>
+                    <div id="urlPanel${idx}"><input type="url" id="c${idx}photoUrl" placeholder="https://... image URL" oninput="previewFromUrl(${idx})"></div>
                     <div id="uploadPanel${idx}" style="display:none">
                         <div class="file-drop" id="drop${idx}" ondragover="handleDrag(event,${idx})" ondragleave="handleDragLeave(${idx})" ondrop="handleDrop(event,${idx})">
                             <input type="file" accept="image/*" onchange="handleFileSelect(event,${idx})">
-                            <div class="file-drop-text">
-                                <strong>Tap to choose photo</strong>
-                                or drag and drop here
-                            </div>
+                            <div class="file-drop-text"><strong>Tap to choose photo</strong>or drag and drop here</div>
                         </div>
                     </div>
                     <img class="photo-preview" id="prev${idx}" src="" alt="preview">
@@ -284,110 +326,137 @@ cardDefs.forEach((c, i) => {
                 </div>
             </div>
             <div class="field">
-                <label>Hero Overlay Darkness</label>
+                <label>Overlay Darkness</label>
                 <input type="range" id="c${idx}overlay" min="0.3" max="0.85" step="0.05" value="0.55" style="width:100%;accent-color:var(--red)">
-                <div class="hint">Darken the photo so your headline text stays readable.</div>
             </div>
         </div>
     </div>`;
 });
 
-// Photo tab switcher
+// ── Link row builder ─────────────────────────────────────────────────────────
+const defaultLinks = [
+    { label: '❤️ Donate — Black Dog Institute', url: 'https://www.teamblackdog.org.au/fundraisers/mindthehundred/mindthehundred--mt100-?utm_source=ig&utm_medium=social&utm_content=link_in_bio' },
+    { label: '📸 Instagram', url: 'https://www.instagram.com/samsonswiftt/' },
+    { label: '▶️ YouTube', url: '' },
+    { label: '🎵 TikTok', url: '' },
+];
+
+defaultLinks.forEach(l => addLinkRow(l.label, l.url));
+
+function addLinkRow(label='', url='') {
+    const rows = document.getElementById('linkRows');
+    if (rows.children.length >= 8) return;
+    const id = Date.now();
+    const div = document.createElement('div');
+    div.className = 'link-row';
+    div.id = `lr${id}`;
+    div.innerHTML = `
+        <input type="text" placeholder="Button label" value="${label}">
+        <input type="url" placeholder="https://..." value="${url}">
+        <button class="link-remove" onclick="document.getElementById('lr${id}').remove()" title="Remove">×</button>`;
+    rows.appendChild(div);
+}
+
+function getLinks() {
+    return Array.from(document.getElementById('linkRows').children).map(row => {
+        const inputs = row.querySelectorAll('input');
+        return { label: inputs[0].value.trim(), url: inputs[1].value.trim() };
+    }).filter(l => l.label);
+}
+
+// ── Photo handling ───────────────────────────────────────────────────────────
+const photoData = {};
+
 function switchPhotoTab(idx, mode) {
-    const tabs = document.querySelectorAll(`#ce${idx} .photo-tab`);
+    const wrap = document.getElementById(`photoWrap${idx}`) || document.getElementById(`photoWrapL`);
+    const tabs = (document.getElementById(`photoWrap${idx}`) || document.getElementById('photoWrapL')).querySelectorAll('.photo-tab');
     tabs[0].classList.toggle('active', mode==='url');
     tabs[1].classList.toggle('active', mode==='upload');
     document.getElementById(`urlPanel${idx}`).style.display = mode==='url'?'block':'none';
     document.getElementById(`uploadPanel${idx}`).style.display = mode==='upload'?'block':'none';
 }
 
-// Photo data store - base64 or url per card
-const photoData = {};
-
 function previewFromUrl(idx) {
     const url = document.getElementById(`c${idx}photoUrl`).value.trim();
     photoData[idx] = url || null;
     const prev = document.getElementById(`prev${idx}`);
     const clr  = document.getElementById(`clr${idx}`);
-    if (url) { prev.src = url; prev.classList.add('show'); clr.classList.add('show'); }
-    else     { prev.classList.remove('show'); clr.classList.remove('show'); }
+    if (url) { prev.src=url; prev.classList.add('show'); clr.classList.add('show'); }
+    else { prev.classList.remove('show'); clr.classList.remove('show'); }
 }
-
-function handleFileSelect(e, idx) {
-    const file = e.target.files[0];
-    if (!file) return;
-    readFile(file, idx);
-}
-
-function handleDrag(e, idx) { e.preventDefault(); document.getElementById(`drop${idx}`).classList.add('drag'); }
-function handleDragLeave(idx) { document.getElementById(`drop${idx}`).classList.remove('drag'); }
-function handleDrop(e, idx) {
-    e.preventDefault();
-    document.getElementById(`drop${idx}`).classList.remove('drag');
-    const file = e.dataTransfer.files[0];
-    if (file && file.type.startsWith('image/')) readFile(file, idx);
-}
-
-function readFile(file, idx) {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-        photoData[idx] = e.target.result; // base64
-        const prev = document.getElementById(`prev${idx}`);
-        const clr  = document.getElementById(`clr${idx}`);
-        prev.src = e.target.result;
-        prev.classList.add('show');
-        clr.classList.add('show');
-        // Update drop zone label
-        document.querySelector(`#drop${idx} .file-drop-text`).innerHTML = `<strong>${file.name}</strong>Photo loaded ✓`;
+function handleFileSelect(e, idx) { const f=e.target.files[0]; if(f) readFile(f,idx); }
+function handleDrag(e,idx){ e.preventDefault(); document.getElementById(`drop${idx}`).classList.add('drag'); }
+function handleDragLeave(idx){ document.getElementById(`drop${idx}`).classList.remove('drag'); }
+function handleDrop(e,idx){ e.preventDefault(); document.getElementById(`drop${idx}`).classList.remove('drag'); const f=e.dataTransfer.files[0]; if(f&&f.type.startsWith('image/')) readFile(f,idx); }
+function readFile(file,idx){
+    const reader=new FileReader();
+    reader.onload=e=>{
+        photoData[idx]=e.target.result;
+        document.getElementById(`prev${idx}`).src=e.target.result;
+        document.getElementById(`prev${idx}`).classList.add('show');
+        document.getElementById(`clr${idx}`).classList.add('show');
+        const dt=document.querySelector(`#drop${idx} .file-drop-text`);
+        if(dt) dt.innerHTML=`<strong>${file.name}</strong>Photo loaded ✓`;
     };
     reader.readAsDataURL(file);
 }
-
-function clearPhoto(idx) {
-    photoData[idx] = null;
-    document.getElementById(`c${idx}photoUrl`).value = '';
+function clearPhoto(idx){
+    photoData[idx]=null;
+    const pu=document.getElementById(`c${idx}photoUrl`); if(pu) pu.value='';
     document.getElementById(`prev${idx}`).classList.remove('show');
     document.getElementById(`clr${idx}`).classList.remove('show');
-    document.querySelector(`#drop${idx} .file-drop-text`).innerHTML = '<strong>Tap to choose photo</strong>or drag and drop here';
+    const dt=document.querySelector(`#drop${idx} .file-drop-text`);
+    if(dt) dt.innerHTML='<strong>Tap to choose photo</strong>or drag and drop here';
 }
 
-function clearForm() {
-    if (!confirm('Clear all fields and photos? This cannot be undone.')) return;
-    document.querySelectorAll('input[type=text], input[type=url], textarea').forEach(el => el.value = '');
-    document.querySelectorAll('input[type=range]').forEach(el => el.value = '0.55');
-    for (let i = 1; i <= 5; i++) {
-        photoData[i] = null;
-        const prev = document.getElementById(`prev${i}`);
-        const clr  = document.getElementById(`clr${i}`);
-        if (prev) prev.classList.remove('show');
-        if (clr)  clr.classList.remove('show');
-        const dropText = document.querySelector(`#drop${i} .file-drop-text`);
-        if (dropText) dropText.innerHTML = '<strong>Tap to choose photo</strong>or drag and drop here';
-    }
+// ── Helpers ──────────────────────────────────────────────────────────────────
+function toggleSection(header){ header.closest('.section').classList.toggle('open'); }
+function toggleCard(header){ header.closest('.card-editor').classList.toggle('open'); }
+function val(id){ return (document.getElementById(id)?.value||'').trim(); }
+function emHL(text){ return text.replace(/\[([^\]]+)\]/g,'<em>$1</em>'); }
+
+// ── Clear form ───────────────────────────────────────────────────────────────
+function clearForm(){
+    if(!confirm('Clear all fields and photos? This cannot be undone.')) return;
+    document.querySelectorAll('input[type=text],input[type=url],textarea').forEach(el=>el.value='');
+    document.querySelectorAll('input[type=range]').forEach(el=>el.value='0.55');
+    document.getElementById('linkRows').innerHTML='';
+    const allIdx = ['L',...Array.from({length:5},(_,i)=>i+2)];
+    allIdx.forEach(idx=>{
+        photoData[idx]=null;
+        const prev=document.getElementById(`prev${idx}`);
+        const clr=document.getElementById(`clr${idx}`);
+        if(prev) prev.classList.remove('show');
+        if(clr) clr.classList.remove('show');
+        const dt=document.querySelector(`#drop${idx} .file-drop-text`);
+        if(dt) dt.innerHTML='<strong>Tap to choose photo</strong>or drag and drop here';
+    });
     document.getElementById('successPanel').classList.remove('show');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.getElementById('previewWrap').classList.remove('show');
+    window.scrollTo({top:0,behavior:'smooth'});
 }
-function toggleSection(header) { header.closest('.section').classList.toggle('open'); }
-function toggleCard(header) { header.closest('.card-editor').classList.toggle('open'); }
-function val(id) { return (document.getElementById(id)?.value || '').trim(); }
-function emHL(text) { return text.replace(/\[([^\]]+)\]/g, '<em>$1</em>'); }
 
-function generateWidget() {
-    const firstName = val('firstName') || 'Samson';
-    const lastName  = val('lastName')  || 'Swift';
+// ── Preview ──────────────────────────────────────────────────────────────────
+function showPreview(){
+    const html=buildWidgetFromForm();
+    if(!html) return;
+    const wrap=document.getElementById('previewWrap');
+    document.getElementById('previewFrame').srcdoc=html;
+    wrap.classList.add('show');
+    wrap.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+// ── Build widget data from form ──────────────────────────────────────────────
+function buildWidgetFromForm(){
+    const firstName = val('firstName')||'Samson';
+    const lastName  = val('lastName')||'Swift';
     const fullName  = `${firstName} ${lastName}`;
     const donateUrl = val('donateUrl');
-    const igUrl     = val('igUrl');
-    const ttUrl     = val('ttUrl');
-    const ytUrl     = val('ytUrl');
-    const e1name    = val('event1Name') || 'Ironman 70.3';
-    const e1date    = val('event1Date');
-    const e1dist    = val('event1Dist');
-    const bio       = val('bio');
-    const cause     = val('cause');
-    const daysOut   = val('daysOut');
+    const igUrl=val('igUrl'), ttUrl=val('ttUrl'), ytUrl=val('ytUrl');
+    const e1name=val('event1Name')||'Ironman 70.3', e1date=val('event1Date'), e1dist=val('event1Dist');
+    const bio=val('bio'), cause=val('cause'), daysOut=val('daysOut');
 
-    const autoSum = [
+    const autoSum=[
         bio,
         cause,
         `${e1name} on ${e1date} — ${e1dist}. Stacking two major events inside eight weeks.`,
@@ -395,53 +464,72 @@ function generateWidget() {
         `${fullName} is racing for mental health. Follow the journey and support the cause.`
     ];
 
-    const cards = cardDefs.map((def, i) => {
-        const idx = i + 1;
-        const photo   = photoData[idx] || null;
-        const overlay = parseFloat(document.getElementById(`c${idx}overlay`)?.value || '0.55');
-        const head    = val(`c${idx}head`) || def.head;
-        const sum     = val(`c${idx}sum`)  || autoSum[i];
-        return { ...def, headline: emHL(head), summary: sum, photo, overlay };
+    // Links card (Card 1)
+    const linksCard = {
+        type: 'links',
+        tag: '01 / LINKS',
+        tagClass: '',
+        heroClass: 'hero-default',
+        headline: emHL(val('linksHeadline')||`[${firstName} ${lastName}] — Links`),
+        tagline: val('linksTagline')||`${fullName} · Endurance Athlete`,
+        photo: photoData['L']||null,
+        overlay: parseFloat(document.getElementById('cLoverlay')?.value||'0.6'),
+        links: getLinks()
+    };
+
+    // Story cards (2-6)
+    const storyCards = cardDefs.map((def,i)=>{
+        const idx=i+2;
+        return {
+            type:'story',
+            tag: def.tag, tagClass: def.tagClass, heroClass: def.heroClass,
+            headline: emHL(val(`c${idx}head`)||def.head),
+            summary: val(`c${idx}sum`)||autoSum[i],
+            photo: photoData[idx]||null,
+            overlay: parseFloat(document.getElementById(`c${idx}overlay`)?.value||'0.55'),
+            showDonate: def.showDonate, showSocials: def.showSocials,
+            iButtons: def.iButtons||[], analogy: def.analogy||null
+        };
     });
 
-    const html = buildWidget({ fullName, firstName, donateUrl, igUrl, ttUrl, ytUrl, cards });
-    const blob = new Blob([html], { type: 'text/html' });
-    const url = URL.createObjectURL(blob);
-    const dl = document.getElementById('downloadBtn');
-    dl.href = url;
-    dl.download = `itabs-${firstName.toLowerCase()}-${lastName.toLowerCase()}.html`;
-    document.getElementById('successPanel').classList.add('show');
-    document.getElementById('successPanel').scrollIntoView({ behavior: 'smooth' });
+    return buildWidget({fullName, firstName, donateUrl, igUrl, ttUrl, ytUrl, cards:[linksCard,...storyCards]});
 }
 
-function buildWidget({ fullName, firstName, donateUrl, igUrl, ttUrl, ytUrl, cards }) {
-    const IGicon = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>`;
-    const TTicon = `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/></svg>`;
-    const YTicon = `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.13-2.14C19.55 3.6 12 3.6 12 3.6s-7.55 0-9.37.45A3.02 3.02 0 0 0 .5 6.19C.06 8.02 0 12 0 12s.06 3.98.5 5.81a3.02 3.02 0 0 0 2.13 2.14C4.45 20.4 12 20.4 12 20.4s7.55 0 9.37-.45a3.02 3.02 0 0 0 2.13-2.14C23.94 15.98 24 12 24 12s-.06-3.98-.5-5.81zM9.75 15.52V8.48L15.5 12l-5.75 3.52z"/></svg>`;
+// ── Generate (download) ──────────────────────────────────────────────────────
+function generateWidget(){
+    const html=buildWidgetFromForm();
+    if(!html) return;
+    const wrap=document.getElementById('previewWrap');
+    if(wrap.classList.contains('show')) document.getElementById('previewFrame').srcdoc=html;
+    const blob=new Blob([html],{type:'text/html'});
+    const url=URL.createObjectURL(blob);
+    const firstName=val('firstName')||'samson', lastName=val('lastName')||'swift';
+    const dl=document.getElementById('downloadBtn');
+    dl.href=url;
+    dl.download=`itabs-${firstName.toLowerCase()}-${lastName.toLowerCase()}.html`;
+    document.getElementById('successPanel').classList.add('show');
+    document.getElementById('successPanel').scrollIntoView({behavior:'smooth'});
+}
 
-    const socialBar = `<div class="social-bar">${[
-        { url: igUrl, icon: IGicon, label: 'Instagram' },
-        { url: ttUrl, icon: TTicon, label: 'TikTok' },
-        { url: ytUrl, icon: YTicon, label: 'YouTube' }
-    ].map(s => {
-        const cls = s.url ? 'social-link' : 'social-link disabled';
-        const inner = s.url
-            ? `<a href="${s.url}" target="_blank" rel="noopener" class="${cls}">${s.icon}</a>`
-            : `<span class="${cls}">${s.icon}</span>`;
+// ── Widget HTML builder ──────────────────────────────────────────────────────
+function buildWidget({fullName, firstName, donateUrl, igUrl, ttUrl, ytUrl, cards}){
+    const IGicon=`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>`;
+    const TTicon=`<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/></svg>`;
+    const YTicon=`<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.13-2.14C19.55 3.6 12 3.6 12 3.6s-7.55 0-9.37.45A3.02 3.02 0 0 0 .5 6.19C.06 8.02 0 12 0 12s.06 3.98.5 5.81a3.02 3.02 0 0 0 2.13 2.14C4.45 20.4 12 20.4 12 20.4s7.55 0 9.37-.45a3.02 3.02 0 0 0 2.13-2.14C23.94 15.98 24 12 24 12s-.06-3.98-.5-5.81zM9.75 15.52V8.48L15.5 12l-5.75 3.52z"/></svg>`;
+    const socialBar=`<div class="social-bar">${[{url:igUrl,icon:IGicon,label:'Instagram'},{url:ttUrl,icon:TTicon,label:'TikTok'},{url:ytUrl,icon:YTicon,label:'YouTube'}].map(s=>{
+        const cls=s.url?'social-link':'social-link disabled';
+        const inner=s.url?`<a href="${s.url}" target="_blank" rel="noopener" class="${cls}">${s.icon}</a>`:`<span class="${cls}">${s.icon}</span>`;
         return `<div style="display:flex;flex-direction:column;align-items:center;gap:4px">${inner}<span class="social-label">${s.label}</span></div>`;
     }).join('')}</div>`;
+    const donateBtn=donateUrl?`<a href="${donateUrl}" target="_blank" rel="noopener" class="donate-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>Sponsor ${firstName} — Donate Now</a>`:'';
 
-    const donateBtn = donateUrl
-        ? `<a href="${donateUrl}" target="_blank" rel="noopener" class="donate-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>Sponsor ${firstName} — Donate Now</a>`
-        : '';
-
-    // Serialise card data (no photo — handled via inline style)
-    const cardsData = cards.map(c => ({
-        tag: c.tag, tagClass: c.tagClass, headline: c.headline, heroClass: c.heroClass,
-        summary: c.summary, photo: c.photo || '', overlay: c.overlay,
-        analogy: c.analogy || null, iButtons: c.iButtons || [],
-        showDonate: c.showDonate, showSocials: c.showSocials
-    }));
+    const cardsJSON=JSON.stringify(cards.map(c=>({
+        type:c.type, tag:c.tag, tagClass:c.tagClass||'', headline:c.headline,
+        heroClass:c.heroClass, photo:c.photo||'', overlay:c.overlay||0.55,
+        tagline:c.tagline||'', links:c.links||[],
+        summary:c.summary||'', analogy:c.analogy||null, iButtons:c.iButtons||[],
+        showDonate:c.showDonate||false, showSocials:c.showSocials||false
+    })));
 
     return `<!DOCTYPE html>
 <html lang="en">
@@ -464,22 +552,21 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg-primary);c
 .card{position:absolute;inset:0;display:flex;flex-direction:column;opacity:0;transform:translateX(100%);transition:all 0.3s ease;pointer-events:none}
 .card.active{opacity:1;transform:translateX(0);pointer-events:all}
 .card.prev{opacity:0;transform:translateX(-100%)}
-/* Hero — base gradients as fallback */
-.card-hero{padding:52px 20px 20px;min-height:38%;display:flex;flex-direction:column;justify-content:flex-end;background-size:cover;background-position:center;position:relative;overflow:hidden}
-.hero-default{background-color:#0f172a}
-.hero-purple{background-color:#1e1b4b}
-.hero-cyan{background-color:#0c4a6e}
-.hero-amber{background-color:#431407}
-.hero-green{background-color:#052e16}
-.hero-red{background-color:#450a0a}
-/* Dark overlay over photo */
-.card-hero::before{content:'';position:absolute;inset:0;z-index:0}
+.card-hero{padding:52px 20px 20px;min-height:38%;display:flex;flex-direction:column;justify-content:flex-end;background-size:cover;background-position:center top;position:relative;overflow:hidden}
+.hero-default{background-color:#0f172a}.hero-purple{background-color:#1e1b4b}.hero-cyan{background-color:#0c4a6e}.hero-amber{background-color:#431407}.hero-green{background-color:#052e16}.hero-red{background-color:#450a0a}
 .card-hero > *{position:relative;z-index:1}
 .card-tag{font-size:10px;font-weight:700;letter-spacing:.15em;color:rgba(255,255,255,0.7);text-transform:uppercase;margin-bottom:8px}
 .tag-purple{color:#a78bfa}.tag-cyan{color:#67e8f9}.tag-amber{color:#fcd34d}.tag-green{color:#6ee7b7}.tag-red{color:#fca5a5}
 .card-headline{font-size:clamp(20px,5vw,26px);font-weight:700;line-height:1.25;text-shadow:0 2px 8px rgba(0,0,0,0.5)}
 em{font-style:normal}
 .hero-default em{color:#cbd5e1}.hero-purple em{color:#a78bfa}.hero-cyan em{color:#67e8f9}.hero-amber em{color:#fcd34d}.hero-green em{color:#6ee7b7}.hero-red em{color:#fca5a5}
+/* Links card */
+.links-card-body{flex:1;overflow-y:auto;padding:16px 16px 20px;background:var(--bg-secondary);display:flex;flex-direction:column;gap:10px}
+.link-tagline{font-size:12px;color:var(--text-secondary);text-align:center;padding-bottom:4px;border-bottom:1px solid rgba(255,255,255,0.06);padding-bottom:10px;margin-bottom:2px}
+.link-btn{display:flex;align-items:center;justify-content:center;padding:14px 16px;background:var(--bg-tertiary);border:1px solid rgba(255,255,255,0.1);border-radius:12px;font-size:14px;font-weight:600;color:var(--text-primary);text-decoration:none;transition:all var(--transition);text-align:center}
+.link-btn:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.2)}
+.link-btn:active{transform:scale(0.98)}
+/* Story card */
 .card-body{flex:1;overflow-y:auto;padding:20px;background:var(--bg-secondary);display:flex;flex-direction:column;gap:14px}
 .card-summary{font-size:15px;color:var(--text-secondary);line-height:1.7}
 .analogy-box{background:var(--bg-tertiary);border-radius:12px;padding:14px 16px;border-left:3px solid var(--accent2)}
@@ -518,7 +605,7 @@ em{font-style:normal}
 <div class="cards-wrapper" id="cardsWrapper"></div>
 <div class="nav-area">
 <button class="nav-btn" id="prevBtn" onclick="navigate(-1)">←</button>
-<span class="card-counter" id="counter">1 / 5</span>
+<span class="card-counter" id="counter">1 / ${cards.length}</span>
 <button class="nav-btn" id="nextBtn" onclick="navigate(1)">→</button>
 </div>
 </div>
@@ -534,42 +621,64 @@ em{font-style:normal}
 <script>
 const DONATE_BTN=\`${donateBtn}\`;
 const SOCIAL_BAR=\`${socialBar}\`;
-const cards=${JSON.stringify(cardsData)};
-let cur=0;const tot=cards.length;
+const cards=${cardsJSON};
+let cur=0; const tot=cards.length;
 const mo=document.getElementById('modalOverlay');
+
 function buildCard(c,i){
 const el=document.createElement('div');
 el.className='card'+(i===0?' active':'');
-// Hero style — photo or gradient
-const heroStyle=c.photo
-  ? \`background-image:url('\${c.photo}');background-size:cover;background-position:center top;\`
-  : '';
-const overlayStyle=\`background:rgba(0,0,0,\${c.overlay||0.55})\`;
-const analogy=c.analogy?\`<div class="analogy-box"><div class="analogy-title">\${c.analogy.title}</div><div class="analogy-text">\${c.analogy.text}</div></div>\`:'';
-const ibtns=c.iButtons.length?\`<div class="i-buttons">\${c.iButtons.map(b=>\`<button class="i-button" data-term="\${b.term}" data-type="\${b.type}" data-content="\${encodeURIComponent(b.content)}"><span class="i-dot">i</span>\${b.label}</button>\`).join('')}</div>\`:'';
-const donate=c.showDonate?DONATE_BTN:'';
-const socials=c.showSocials?SOCIAL_BAR:'';
-el.innerHTML=\`
-<div class="card-hero \${c.heroClass}" style="\${heroStyle}">
-  <div class="card-hero-overlay" style="position:absolute;inset:0;\${overlayStyle}"></div>
-  <div class="card-tag \${c.tagClass}" style="position:relative;z-index:1">\${c.tag}</div>
-  <h2 class="card-headline" style="position:relative;z-index:1">\${c.headline}</h2>
-</div>
-<div class="card-body">
-  <p class="card-summary">\${c.summary}</p>
-  \${analogy}\${ibtns}\${donate}\${socials}
-</div>\`;
-el.querySelectorAll('.i-button').forEach(b=>b.addEventListener('click',e=>{e.stopPropagation();openModal(b.dataset.term,b.dataset.type,decodeURIComponent(b.dataset.content));}));
+const heroStyle=c.photo?\`background-image:url('\${c.photo}');background-size:cover;background-position:center top;\`:'';
+const overlayColor=\`rgba(0,0,0,\${c.overlay||0.55})\`;
+
+if(c.type==='links'){
+    const linksHTML=c.links.map(l=>l.url
+        ? \`<a href="\${l.url}" target="_blank" rel="noopener" class="link-btn">\${l.label}</a>\`
+        : \`<div class="link-btn" style="opacity:0.4;cursor:default">\${l.label}</div>\`
+    ).join('');
+    el.innerHTML=\`
+    <div class="card-hero \${c.heroClass}" style="\${heroStyle}">
+        <div style="position:absolute;inset:0;background:\${overlayColor}"></div>
+        <div class="card-tag \${c.tagClass}" style="position:relative;z-index:1">\${c.tag}</div>
+        <h2 class="card-headline" style="position:relative;z-index:1">\${c.headline}</h2>
+    </div>
+    <div class="links-card-body">
+        <div class="link-tagline">\${c.tagline}</div>
+        \${linksHTML}
+    </div>\`;
+} else {
+    const analogy=c.analogy?\`<div class="analogy-box"><div class="analogy-title">\${c.analogy.title}</div><div class="analogy-text">\${c.analogy.text}</div></div>\`:'';
+    const ibtns=c.iButtons&&c.iButtons.length?\`<div class="i-buttons">\${c.iButtons.map(b=>\`<button class="i-button" data-term="\${b.term}" data-type="\${b.type}" data-content="\${encodeURIComponent(b.content)}"><span class="i-dot">i</span>\${b.label}</button>\`).join('')}</div>\`:'';
+    el.innerHTML=\`
+    <div class="card-hero \${c.heroClass}" style="\${heroStyle}">
+        <div style="position:absolute;inset:0;background:\${overlayColor}"></div>
+        <div class="card-tag \${c.tagClass}" style="position:relative;z-index:1">\${c.tag}</div>
+        <h2 class="card-headline" style="position:relative;z-index:1">\${c.headline}</h2>
+    </div>
+    <div class="card-body">
+        <p class="card-summary">\${c.summary}</p>
+        \${analogy}\${ibtns}
+        \${c.showDonate?DONATE_BTN:''}
+        \${c.showSocials?SOCIAL_BAR:''}
+    </div>\`;
+    el.querySelectorAll('.i-button').forEach(b=>b.addEventListener('click',e=>{e.stopPropagation();openModal(b.dataset.term,b.dataset.type,decodeURIComponent(b.dataset.content));}));
+}
 return el;
 }
+
 function init(){
 const prog=document.getElementById('progress');
 const wrap=document.getElementById('cardsWrapper');
-cards.forEach((c,i)=>{const s=document.createElement('div');s.className='progress-segment'+(i===0?' active':'');prog.appendChild(s);wrap.appendChild(buildCard(c,i));});
+cards.forEach((c,i)=>{
+    const s=document.createElement('div');
+    s.className='progress-segment'+(i===0?' active':'');
+    prog.appendChild(s);
+    wrap.appendChild(buildCard(c,i));
+});
 document.getElementById('counter').textContent=\`1 / \${tot}\`;
 document.getElementById('prevBtn').disabled=true;
 document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')navigate(1);if(e.key==='ArrowLeft')navigate(-1);if(e.key==='Escape')closeModal();});
-let sx=0;const cw=document.getElementById('cardsWrapper');
+let sx=0; const cw=document.getElementById('cardsWrapper');
 cw.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;},{passive:true});
 cw.addEventListener('touchend',e=>{const d=sx-e.changedTouches[0].clientX;if(Math.abs(d)>50)navigate(d>0?1:-1);});
 }
