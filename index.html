@@ -1,139 +1,288 @@
-<!-- iTabs Code for Kickstarter Campaign -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>iTabs | Samson Swift</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        :root {
+            --bg-primary: #0a0a0f; --bg-secondary: #12121a; --bg-tertiary: #1e1e2e;
+            --text-primary: #ffffff; --text-secondary: #9090b0;
+            --accent: #7c3aed; --accent2: #06b6d4; --i-button: #f59e0b;
+            --card-radius: 16px; --transition: 0.2s ease;
+        }
+        html, body { height: 100%; overflow: hidden; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg-primary); color: var(--text-primary); line-height: 1.5; }
+        .container { max-width: 430px; margin: 0 auto; height: 100%; display: flex; flex-direction: column; position: relative; }
 
-<div style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.1); max-width: 500px; margin: 20px auto;">
-    <div style="position: relative; width: 100%; height: 350px; overflow: hidden; background: linear-gradient(135deg, #05CE78 0%, #00A862 100%);">
-        <div style="position: relative; width: 100%; height: 100%; overflow: hidden;">
-            <div id="itabsTrack" style="display: flex; transition: transform 0.4s ease; height: 100%;">
-        <div style="min-width: 100%; height: 100%;">
-            <img src="https://i.ibb.co/rRR5Wbwt/sciving1.jpg" alt="Help us build the app for Affordable Student Housing 1" style="width: 100%; height: 100%; object-fit: cover;">
-            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #ffffff; font-weight: bold; font-size: 30px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); padding: 10px; z-index: 10; text-align: center; width: 90%;">Live now on Kickstarter</div>
-        </div>
-        <div style="min-width: 100%; height: 100%;">
-            <img src="https://i.ibb.co/VF6s63T/sci7.jpg" alt="Help us build the app for Affordable Student Housing 2" style="width: 100%; height: 100%; object-fit: cover;">
-        </div>
-        <div style="min-width: 100%; height: 100%;">
-            <img src="https://i.ibb.co/9kvGygsg/sciving3.jpg" alt="Help us build the app for Affordable Student Housing 3" style="width: 100%; height: 100%; object-fit: cover;">
-        </div>
-        <div style="min-width: 100%; height: 100%;">
-            <img src="https://i.ibb.co/dwmyhHpL/sciving5.avif" alt="Help us build the app for Affordable Student Housing 4" style="width: 100%; height: 100%; object-fit: cover;">
-        </div>
-        <div style="min-width: 100%; height: 100%;">
-            <img src="https://i.ibb.co/RkR6szvM/sciving2.jpg" alt="Help us build the app for Affordable Student Housing 5" style="width: 100%; height: 100%; object-fit: cover;">
-        </div>
-            </div>
-        </div>
-        <div style="position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 15;">
-        <div class="itabs-dot" data-slide="0" style="width: 10px; height: 10px; border-radius: 50%; background: white; cursor: pointer; transition: all 0.3s; border: 2px solid white;"></div>
-        <div class="itabs-dot" data-slide="1" style="width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.5); cursor: pointer; transition: all 0.3s; border: 2px solid white;"></div>
-        <div class="itabs-dot" data-slide="2" style="width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.5); cursor: pointer; transition: all 0.3s; border: 2px solid white;"></div>
-        <div class="itabs-dot" data-slide="3" style="width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.5); cursor: pointer; transition: all 0.3s; border: 2px solid white;"></div>
-        <div class="itabs-dot" data-slide="4" style="width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.5); cursor: pointer; transition: all 0.3s; border: 2px solid white;"></div>
-        </div>
-        <div id="itabsCounter" style="position: absolute; bottom: 15px; right: 15px; background: rgba(0,0,0,0.6); color: white; padding: 5px 12px; border-radius: 15px; font-size: 14px; font-weight: bold; z-index: 15;">1/5</div>
-        <div style="position: absolute; top: 20px; right: 20px; width: 45px; height: 45px; background: rgba(255,255,255,0.95); color: #05CE78; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 24px; cursor: pointer; box-shadow: 0 4px 20px rgba(0,0,0,0.2); border: 3px solid white; z-index: 20;" onclick="document.getElementById('itabsPopup').style.display='flex'">i</div>
-    </div>
-    <div style="padding: 25px; text-align: center; position: relative;">
-        <!-- iTabs Button (Bottom Right) -->
-        <div style="position: absolute; bottom: 12px; right: 15px;">
-            <div onclick="document.getElementById('itabsInfoPopup').style.display='flex'" onmouseenter="this.querySelector('.itabs-tooltip').style.opacity='1'" onmouseleave="this.querySelector('.itabs-tooltip').style.opacity='0'" style="width: 35px; height: 35px; background: rgba(255, 255, 255, 0.95); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.15); border: 2px solid #05CE78; transition: all 0.3s ease; cursor: pointer; position: relative;">
-                <div class="itabs-tooltip" style="position: absolute; background: rgba(0, 0, 0, 0.9); color: white; padding: 8px 12px; border-radius: 6px; font-size: 12px; white-space: nowrap; pointer-events: none; opacity: 0; transition: opacity 0.3s; bottom: 100%; left: 50%; transform: translateX(-50%) translateY(-5px); z-index: 1000;">Create your own iTabs</div>
-                <div style="color: #05CE78; font-size: 14px; font-weight: bold; line-height: 1; margin-bottom: 1px;">i</div>
-                <div style="color: #05CE78; font-size: 6px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px; line-height: 1;">iTabs</div>
-            </div>
-        </div>
-        <h3 style="font-size: 1.3em; color: #2d3748; margin-bottom: 10px; font-weight: 600;">Help us build the app for Affordable Student Housing</h3>
-        <p style="color: #718096; font-size: 1em; line-height: 1.6;">Swipe to see more • Click i for details</p>
+        .progress-container { display: flex; gap: 4px; padding: 12px 16px 8px; position: absolute; top: 0; left: 0; right: 0; z-index: 100; background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent); }
+        .progress-segment { flex: 1; height: 3px; background: rgba(255,255,255,0.2); border-radius: 2px; transition: background var(--transition); }
+        .progress-segment.viewed { background: rgba(255,255,255,0.6); }
+        .progress-segment.active { background: var(--accent); }
+
+        .cards-wrapper { flex: 1; position: relative; overflow: hidden; }
+        .card { position: absolute; inset: 0; display: flex; flex-direction: column; opacity: 0; transform: translateX(100%); transition: all 0.3s ease; pointer-events: none; }
+        .card.active { opacity: 1; transform: translateX(0); pointer-events: all; }
+        .card.prev { opacity: 0; transform: translateX(-100%); }
+
+        .card-hero { padding: 52px 20px 20px; min-height: 38%; display: flex; flex-direction: column; justify-content: flex-end; }
+        .hero-default { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); }
+        .hero-purple  { background: linear-gradient(135deg, #4c1d95 0%, #1e1b4b 100%); }
+        .hero-cyan    { background: linear-gradient(135deg, #164e63 0%, #0c4a6e 100%); }
+        .hero-amber   { background: linear-gradient(135deg, #78350f 0%, #431407 100%); }
+        .hero-green   { background: linear-gradient(135deg, #14532d 0%, #052e16 100%); }
+        .hero-red     { background: linear-gradient(135deg, #7f1d1d 0%, #450a0a 100%); }
+
+        .card-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.15em; color: var(--text-secondary); text-transform: uppercase; margin-bottom: 8px; }
+        .tag-purple { color: #a78bfa; } .tag-cyan { color: #67e8f9; } .tag-amber { color: #fcd34d; } .tag-green { color: #6ee7b7; } .tag-red { color: #fca5a5; }
+        .card-headline { font-size: clamp(20px, 5vw, 26px); font-weight: 700; line-height: 1.25; }
+        .hero-default em { color: #cbd5e1; font-style: normal; }
+        .hero-purple  em { color: #a78bfa; font-style: normal; }
+        .hero-cyan    em { color: #67e8f9; font-style: normal; }
+        .hero-amber   em { color: #fcd34d; font-style: normal; }
+        .hero-green   em { color: #6ee7b7; font-style: normal; }
+        .hero-red     em { color: #fca5a5; font-style: normal; }
+
+        .card-body { flex: 1; overflow-y: auto; padding: 20px; background: var(--bg-secondary); display: flex; flex-direction: column; gap: 14px; }
+        .card-summary { font-size: 15px; color: var(--text-secondary); line-height: 1.7; }
+        .analogy-box { background: var(--bg-tertiary); border-radius: 12px; padding: 14px 16px; border-left: 3px solid var(--accent2); }
+        .analogy-title { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent2); margin-bottom: 6px; }
+        .analogy-text { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+        .i-buttons { display: flex; flex-wrap: wrap; gap: 8px; }
+        .i-button { display: flex; align-items: center; gap: 6px; background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.3); border-radius: 20px; padding: 7px 14px; font-size: 12px; font-weight: 600; color: var(--i-button); cursor: pointer; transition: all var(--transition); }
+        .i-button:hover { background: rgba(245,158,11,0.2); }
+        .i-dot { width: 16px; height: 16px; background: var(--i-button); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: #000; flex-shrink: 0; }
+
+        .donate-btn { display: flex; align-items: center; justify-content: center; gap: 8px; background: linear-gradient(135deg, #dc2626, #b91c1c); color: #fff; font-size: 15px; font-weight: 700; border: none; border-radius: 12px; padding: 14px 20px; cursor: pointer; text-decoration: none; transition: opacity var(--transition); }
+        .donate-btn:hover { opacity: 0.88; }
+
+        .social-bar { display: flex; align-items: center; justify-content: center; gap: 14px; padding: 6px 0 2px; }
+        .social-link { display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 50%; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); color: var(--text-secondary); text-decoration: none; transition: all var(--transition); }
+        .social-link:hover { background: rgba(255,255,255,0.14); color: #fff; }
+        .social-link.disabled { opacity: 0.3; cursor: default; pointer-events: none; }
+        .social-label { font-size: 10px; color: var(--text-secondary); text-align: center; margin-top: 6px; letter-spacing: 0.05em; }
+
+        .nav-area { display: flex; align-items: center; justify-content: space-between; padding: 10px 20px 16px; background: var(--bg-secondary); border-top: 1px solid rgba(255,255,255,0.06); }
+        .nav-btn { width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.05); color: var(--text-primary); font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all var(--transition); }
+        .nav-btn:hover:not(:disabled) { background: rgba(255,255,255,0.12); }
+        .nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+        .card-counter { font-size: 13px; font-weight: 600; color: var(--text-secondary); }
+
+        .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); display: flex; align-items: flex-end; justify-content: center; opacity: 0; pointer-events: none; transition: opacity var(--transition); z-index: 999; }
+        .modal-overlay.active { opacity: 1; pointer-events: all; }
+        .modal-sheet { width: 100%; max-width: 430px; margin: 0 auto; background: var(--bg-tertiary); border-radius: 20px 20px 0 0; padding: 20px; transform: translateY(100%); transition: transform 0.3s ease; }
+        .modal-overlay.active .modal-sheet { transform: translateY(0); }
+        .modal-handle { width: 36px; height: 4px; background: rgba(255,255,255,0.2); border-radius: 2px; margin: 0 auto 16px; }
+        .modal-term { font-size: 17px; font-weight: 700; margin-bottom: 4px; }
+        .modal-type { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--i-button); margin-bottom: 12px; }
+        .modal-content { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+        .modal-close { margin-top: 20px; width: 100%; padding: 12px; background: rgba(255,255,255,0.08); border: none; border-radius: 10px; color: var(--text-primary); font-size: 14px; font-weight: 600; cursor: pointer; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="progress-container" id="progress"></div>
+    <div class="cards-wrapper" id="cardsWrapper"></div>
+    <div class="nav-area">
+        <button class="nav-btn" id="prevBtn" onclick="navigate(-1)">←</button>
+        <span class="card-counter" id="counter">1 / 5</span>
+        <button class="nav-btn" id="nextBtn" onclick="navigate(1)">→</button>
     </div>
 </div>
 
-<div id="itabsPopup" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); align-items: center; justify-content: center; padding: 20px;">
-    <div style="position: relative; background-color: white; border-radius: 20px; width: 90%; max-width: 600px; max-height: 80vh; box-shadow: 0 20px 60px rgba(0,0,0,0.4); overflow: hidden;">
-        <div style="background: linear-gradient(135deg, #05CE78 0%, #00A862 100%); color: white; padding: 30px; display: flex; justify-content: space-between; align-items: center;">
-            <h3 style="margin: 0; font-size: 1.8em;">Help us build the app for Affordable Student Housing</h3>
-            <button onclick="document.getElementById('itabsPopup').style.display='none'" style="color: white; font-size: 40px; font-weight: bold; cursor: pointer; background: none; border: none; width: 40px; height: 40px;">&times;</button>
-        </div>
-        <div style="padding: 35px; max-height: calc(80vh - 120px); overflow-y: auto;">
-            <h4 style="color: #05CE78; font-size: 1.4em; margin-bottom: 15px;">What is it?</h4>
-            <p style="color: #4a5568; font-size: 1.05em; line-height: 1.8; margin-bottom: 15px;">This Kickstarter campaign aims to fund the development of a mobile application dedicated to connecting students with affordable housing options. The app will streamline the search process and provide a centralized platform for finding suitable and budget-friendly accommodations.</p>
-
-            <h4 style="color: #05CE78; font-size: 1.4em; margin-bottom: 15px; margin-top: 25px;">Why back this?</h4>
-            <p style="color: #4a5568; font-size: 1.05em; line-height: 1.8; margin-bottom: 15px;">Backing this project helps students overcome the financial burden of expensive housing, enabling them to focus on their studies and overall well-being. You'll be contributing to a solution that directly addresses a critical need for students, making education more accessible and affordable.</p>
-
-            <h4 style="color: #05CE78; font-size: 1.4em; margin-bottom: 15px; margin-top: 25px;">How does it work?</h4>
-            <p style="color: #4a5568; font-size: 1.05em; line-height: 1.8; margin-bottom: 15px;">The campaign seeks funding to build the app's features, including search filters, property listings, and communication tools. Once developed, students can use the app to browse available housing, connect with landlords, and find roommates, all within a trusted and verified environment.</p>
-
-            <h4 style="color: #05CE78; font-size: 1.4em; margin-bottom: 15px; margin-top: 25px;">What makes it special?</h4>
-            <p style="color: #4a5568; font-size: 1.05em; line-height: 1.8; margin-bottom: 15px;">Unlike general rental platforms, this app focuses specifically on the needs and budgets of students. It aims to create a safe and reliable ecosystem with features designed for the student demographic, addressing a niche market often overlooked by larger platforms.</p>
-
-            <a href="https://www.kickstarter.com/projects/sciving/help-us-build-the-app-for-affordable-student-housing?ref=discovery_category&term=apps&total_hits=407&category_id=28" target="_blank" style="display: block; margin: 25px 0; padding: 15px; background: #05CE78; color: white; text-align: center; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 1.1em;">Back This Project</a>
-        </div>
-    </div>
-</div>
-
-<!-- iTabs Info Popup -->
-<div id="itabsInfoPopup" style="display: none; position: fixed; z-index: 1001; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); align-items: center; justify-content: center; padding: 20px;">
-    <div style="position: relative; background-color: white; border-radius: 20px; width: 90%; max-width: 500px; box-shadow: 0 20px 60px rgba(0,0,0,0.4); overflow: hidden;">
-        <div style="background: linear-gradient(135deg, #05CE78 0%, #00A862 100%); color: white; padding: 25px; display: flex; justify-content: space-between; align-items: center;">
-            <h3 style="margin: 0; font-size: 1.5em;">✨ This uses iTabs</h3>
-            <button onclick="document.getElementById('itabsInfoPopup').style.display='none'" style="color: white; font-size: 35px; font-weight: bold; cursor: pointer; background: none; border: none; width: 35px; height: 35px;">&times;</button>
-        </div>
-        <div style="padding: 30px;">
-            <p style="color: #4a5568; font-size: 1.05em; line-height: 1.8; margin-bottom: 25px;">This interactive display was created with iTabs - making campaigns easy to understand with clickable explanations.</p>
-            <p style="color: #4a5568; font-size: 1.05em; line-height: 1.8; margin-bottom: 25px;"><strong>Want to create iTabs for your campaign?</strong></p>
-            <a href="https://itabsgenerator.gumroad.com/l/kickstarter" target="_blank" style="display: block; width: 100%; padding: 15px; background: linear-gradient(135deg, #05CE78 0%, #00A862 100%); color: white; border: none; border-radius: 12px; font-size: 1.1em; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(5,206,120,0.3); text-align: center; text-decoration: none;">Create Your Own iTabs →</a>
-        </div>
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+    <div class="modal-sheet">
+        <div class="modal-handle"></div>
+        <div class="modal-term" id="modalTerm"></div>
+        <div class="modal-type" id="modalType"></div>
+        <div class="modal-content" id="modalContent"></div>
+        <button class="modal-close" onclick="closeModal()">Close</button>
     </div>
 </div>
 
 <script>
-var itabsCurrentSlide = 0;
-var itabsTotalSlides = 5;
+const DONATE_URL = "https://www.teamblackdog.org.au/fundraisers/mindthehundred/mindthehundred--mt100-?utm_source=ig&utm_medium=social&utm_content=link_in_bio";
+const INSTAGRAM_URL = "https://www.instagram.com/samsonswiftt/";
+const TIKTOK_URL = ""; // paste TikTok URL here
+const YOUTUBE_URL = ""; // paste YouTube URL here
 
-function itabsUpdateCarousel() {
-    var track = document.getElementById('itabsTrack');
-    var counter = document.getElementById('itabsCounter');
-    var dots = document.querySelectorAll('.itabs-dot');
-    if (track) track.style.transform = 'translateX(-' + (itabsCurrentSlide * 100) + '%)';
-    if (counter) counter.textContent = (itabsCurrentSlide + 1) + '/' + itabsTotalSlides;
-    dots.forEach(function(dot, i) {
-        dot.style.background = i === itabsCurrentSlide ? 'white' : 'rgba(255,255,255,0.5)';
+const cards = [
+    {
+        tag: "01 / ATHLETE", tagClass: "",
+        headline: "Meet <em>Samson Swift</em> — Endurance Athlete",
+        heroClass: "hero-default",
+        summary: "At 18 years old, Samson Swift is doing something most adults won't attempt. He's self-coaching himself through two of endurance sport's toughest challenges — simultaneously. No coach. No team behind him. Just grit, a plan, and a reason bigger than himself.",
+        analogy: null,
+        iButtons: [{ label: "Self-coached", type: "why-it-matters", term: "Self-Coached Athlete", content: "Samson designs his own training blocks — managing volume, recovery, and race prep without a paid coach. At 18, that level of autonomy and discipline is genuinely rare." }],
+        showDonate: false, showSocials: false
+    },
+    {
+        tag: "02 / MISSION", tagClass: "tag-red",
+        headline: "Running <em>100km</em> for Mental Health",
+        heroClass: "hero-red",
+        summary: "Samson is running 100km on 16 May 2026 to raise funds for the Black Dog Institute — Australia's leading mental health research centre. He's not just racing. He's using every kilometre to change the conversation around mental health.",
+        analogy: { title: "The cause", text: "The Black Dog Institute is Australia's leading mental health research centre. Team Blackdog puts athletes on the start line to raise awareness and funds directly." },
+        iButtons: [
+            { label: "Black Dog Institute", type: "context", term: "Black Dog Institute", content: "The Black Dog Institute is Australia's leading mental health research organisation, focused on prevention and treatment of mental illness. Team Blackdog is their fundraising program — athletes raise money by completing endurance events." },
+            { label: "Why 100km", type: "why-it-matters", term: "100km Ultra Distance", content: "A 100km ultramarathon is roughly 2.5 times the length of a marathon. Most runners train for years before attempting the distance. Samson is doing it at 18 as a fundraising challenge." }
+        ],
+        showDonate: true, showSocials: false
+    },
+    {
+        tag: "03 / DOUBLE UP", tagClass: "tag-cyan",
+        headline: "Ironman 70.3 <em>Debut</em> on 22.03.26",
+        heroClass: "hero-cyan",
+        summary: "Before the ultra, Samson debuted at Ironman 70.3 on 22 March 2026 — a 1.9km swim, 90km bike, and 21km run back-to-back. He's now stacking an Ironman debut and a 100km ultra inside eight weeks.",
+        analogy: null,
+        iButtons: [
+            { label: "What is 70.3", type: "definition", term: "Ironman 70.3", content: "The 70.3 refers to the total race distance in miles: 1.2-mile swim, 56-mile bike, 13.1-mile run. It's a half-distance Ironman — typically taking age-groupers between 5 and 8 hours to complete." },
+            { label: "8-week stack", type: "context", term: "Race Stacking", content: "Racing a 70.3 and a 100km ultra within eight weeks is an unusual block. Recovery from a 70.3 takes 2–3 weeks before hard training resumes, leaving a very tight window to peak for the ultra." }
+        ],
+        showDonate: false, showSocials: false
+    },
+    {
+        tag: "04 / TRAINING", tagClass: "tag-purple",
+        headline: "Big <em>Weeks</em> in the Books",
+        heroClass: "hero-purple",
+        summary: "Samson documents his prep week by week — 5 runs, 3 rides, 3 swims in a recent seven-day block. Sleep scores, heart rate, calorie data. He's building in public, showing every 5am session and every hard zone 2 run.",
+        analogy: { title: "Zone 2 training", text: "Zone 2 is aerobic base work — slow enough to hold a conversation, fast enough to build endurance. His recent Sunday 30km zone 2 run at 48 days out is classic ultra prep." },
+        iButtons: [
+            { label: "Zone 2 running", type: "definition", term: "Zone 2 Training", content: "Zone 2 refers to low-intensity aerobic training at roughly 60–70% of max heart rate. It builds mitochondrial density and fat oxidation — the engine that keeps ultra runners moving for 10+ hours." },
+            { label: "Building in public", type: "why-it-matters", term: "Public Training Log", content: "Sharing training data publicly keeps athletes accountable and grows a community who invest in the journey, not just the result. Samson's followers watch him earn the finish line week by week." }
+        ],
+        showDonate: false, showSocials: false
+    },
+    {
+        tag: "05 / SUPPORT", tagClass: "tag-green",
+        headline: "Follow the <em>Journey</em> — Back the Cause",
+        heroClass: "hero-green",
+        summary: "Samson is 18, racing for mental health, self-coached, and doing it all in public. Follow along and — if it resonates — hit the button below to donate to the Black Dog Institute.",
+        analogy: null,
+        iButtons: [{ label: "Where funds go", type: "context", term: "Black Dog Institute", content: "Every dollar donated through Samson's fundraiser goes toward mental health research and support programs at the Black Dog Institute — Australia's leading mental health research centre." }],
+        showDonate: true, showSocials: true
+    }
+];
+
+let currentCard = 0;
+const totalCards = cards.length;
+const modalOverlay = document.getElementById('modalOverlay');
+const modalTerm = document.getElementById('modalTerm');
+const modalType = document.getElementById('modalType');
+const modalContent = document.getElementById('modalContent');
+
+const IGicon = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>`;
+const TTicon = `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/></svg>`;
+const YTicon = `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.13-2.14C19.55 3.6 12 3.6 12 3.6s-7.55 0-9.37.45A3.02 3.02 0 0 0 .5 6.19C.06 8.02 0 12 0 12s.06 3.98.5 5.81a3.02 3.02 0 0 0 2.13 2.14C4.45 20.4 12 20.4 12 20.4s7.55 0 9.37-.45a3.02 3.02 0 0 0 2.13-2.14C23.94 15.98 24 12 24 12s-.06-3.98-.5-5.81zM9.75 15.52V8.48L15.5 12l-5.75 3.52z"/></svg>`;
+
+function buildSocialBar() {
+    const socials = [
+        { url: INSTAGRAM_URL, icon: IGicon, label: "Instagram" },
+        { url: TIKTOK_URL,    icon: TTicon, label: "TikTok" },
+        { url: YOUTUBE_URL,   icon: YTicon, label: "YouTube" }
+    ];
+    const items = socials.map(s => {
+        const cls = s.url ? "social-link" : "social-link disabled";
+        const tag = s.url
+            ? `<a href="${s.url}" target="_blank" rel="noopener" class="${cls}" title="${s.label}">`
+            : `<span class="${cls}" title="${s.label} (coming soon)">`;
+        const end = s.url ? `</a>` : `</span>`;
+        return `<div style="display:flex;flex-direction:column;align-items:center;gap:4px">${tag}${s.icon}${end}<span class="social-label">${s.label}</span></div>`;
+    }).join('');
+    return `<div class="social-bar">${items}</div>`;
+}
+
+function buildCard(card, index) {
+    const el = document.createElement('div');
+    el.className = 'card' + (index === 0 ? ' active' : '');
+    const analogyHTML = card.analogy ? `<div class="analogy-box"><div class="analogy-title">${card.analogy.title}</div><div class="analogy-text">${card.analogy.text}</div></div>` : '';
+    const iButtonsHTML = card.iButtons.length ? `<div class="i-buttons">${card.iButtons.map(b => `<button class="i-button" data-term="${b.term}" data-type="${b.type}" data-content="${encodeURIComponent(b.content)}"><span class="i-dot">i</span>${b.label}</button>`).join('')}</div>` : '';
+    const donateHTML = card.showDonate ? `<a href="${DONATE_URL}" target="_blank" rel="noopener" class="donate-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>Sponsor Samson — Donate Now</a>` : '';
+    const socialHTML = card.showSocials ? buildSocialBar() : '';
+
+    el.innerHTML = `
+        <div class="card-hero ${card.heroClass}">
+            <div class="card-tag ${card.tagClass}">${card.tag}</div>
+            <h2 class="card-headline">${card.headline}</h2>
+        </div>
+        <div class="card-body">
+            <p class="card-summary">${card.summary}</p>
+            ${analogyHTML}
+            ${iButtonsHTML}
+            ${donateHTML}
+            ${socialHTML}
+        </div>`;
+
+    el.querySelectorAll('.i-button').forEach(btn => {
+        btn.addEventListener('click', e => {
+            e.stopPropagation();
+            openModal(btn.dataset.term, btn.dataset.type, decodeURIComponent(btn.dataset.content));
+        });
+    });
+    return el;
+}
+
+function init() {
+    const progress = document.getElementById('progress');
+    const wrapper = document.getElementById('cardsWrapper');
+    cards.forEach((card, i) => {
+        const seg = document.createElement('div');
+        seg.className = 'progress-segment' + (i === 0 ? ' active' : '');
+        progress.appendChild(seg);
+        wrapper.appendChild(buildCard(card, i));
+    });
+    document.getElementById('counter').textContent = `1 / ${totalCards}`;
+    document.getElementById('prevBtn').disabled = true;
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight') navigate(1);
+        if (e.key === 'ArrowLeft') navigate(-1);
+        if (e.key === 'Escape') closeModal();
+    });
+    let startX = 0;
+    const cw = document.getElementById('cardsWrapper');
+    cw.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+    cw.addEventListener('touchend', e => {
+        const diff = startX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) navigate(diff > 0 ? 1 : -1);
     });
 }
 
-var trackEl = document.getElementById('itabsTrack');
-var touchStartX = 0;
-if (trackEl) {
-    trackEl.addEventListener('touchstart', function(e) { touchStartX = e.changedTouches[0].screenX; });
-    trackEl.addEventListener('touchend', function(e) {
-        var touchEndX = e.changedTouches[0].screenX;
-        if (touchEndX < touchStartX - 50) {
-            itabsCurrentSlide++;
-            if (itabsCurrentSlide >= itabsTotalSlides) itabsCurrentSlide = 0;
-            itabsUpdateCarousel();
-        } else if (touchEndX > touchStartX + 50) {
-            itabsCurrentSlide--;
-            if (itabsCurrentSlide < 0) itabsCurrentSlide = itabsTotalSlides - 1;
-            itabsUpdateCarousel();
-        }
-    });
+function navigate(direction) {
+    const next = currentCard + direction;
+    if (next >= 0 && next < totalCards) updateCard(next);
 }
-document.querySelectorAll('.itabs-dot').forEach(function(dot, i) {
-    dot.addEventListener('click', function() {
-        itabsCurrentSlide = i;
-        itabsUpdateCarousel();
-    });
-});
-document.getElementById('itabsPopup').addEventListener('click', function(e) {
-    if (e.target.id === 'itabsPopup') this.style.display = 'none';
-});
-document.getElementById('itabsInfoPopup').addEventListener('click', function(e) {
-    if (e.target.id === 'itabsInfoPopup') this.style.display = 'none';
-});
 
-// Auto-advance slideshow
-setInterval(function() {
-    itabsCurrentSlide++;
-    if (itabsCurrentSlide >= itabsTotalSlides) itabsCurrentSlide = 0;
-    itabsUpdateCarousel();
-}, 3000);
+function updateCard(index) {
+    document.querySelectorAll('.card').forEach((c, i) => {
+        c.classList.remove('active', 'prev');
+        if (i === index) c.classList.add('active');
+        else if (i < index) c.classList.add('prev');
+    });
+    document.querySelectorAll('.progress-segment').forEach((s, i) => {
+        s.classList.remove('active', 'viewed');
+        if (i === index) s.classList.add('active');
+        else if (i < index) s.classList.add('viewed');
+    });
+    currentCard = index;
+    document.getElementById('counter').textContent = `${index + 1} / ${totalCards}`;
+    document.getElementById('prevBtn').disabled = index === 0;
+    document.getElementById('nextBtn').disabled = index === totalCards - 1;
+}
+
+function openModal(term, type, content) {
+    const typeLabels = { 'definition': 'Definition', 'context': 'Context', 'why-it-matters': 'Why It Matters', 'related': 'Related' };
+    modalTerm.textContent = term;
+    modalType.textContent = typeLabels[type] || type;
+    modalContent.textContent = content;
+    modalOverlay.classList.add('active');
+}
+
+function closeModal() { modalOverlay.classList.remove('active'); }
+
+init();
 </script>
+</body>
+</html>
